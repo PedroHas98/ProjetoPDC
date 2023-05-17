@@ -1,0 +1,30 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+# Definição das dimensões da grade 3D
+NX = 10
+NY = 10
+NZ = 10
+
+# Carregamento dos dados da propagação da onda
+data = np.loadtxt("wave_data.txt")
+
+# Cria uma grade 3D para a visualização
+x, y, z = np.mgrid[0:NX, 0:NY, 0:NZ]
+
+# Prepara a figura 3D
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+# Plota a propagação da onda
+ax.scatter(x, y, z, c=data.flatten(), cmap='jet')
+
+# Configurações adicionais do gráfico
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Z')
+ax.set_title('Propagação da Onda')
+
+# Exibe o gráfico
+plt.show()
